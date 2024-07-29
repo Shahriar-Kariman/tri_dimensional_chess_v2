@@ -21,21 +21,27 @@ const white_translate = (col,row)=>{
   return {x,z,y}
 }
 
+const assign_translate = (board_code)=>{
+  let t
+  if(board_code==='w'.charCodeAt(0)){
+    t = white_translate
+  }
+  else if(board_code==='b'.charCodeAt(0)){
+    t = black_translate
+  }
+  else {
+    t = neutral_translate
+  }
+  return t
+}
+
 class board{
   constructor(board, size, start_row){
     this.square_list = []
     this.squares = new THREE.Group()
     this.corner_squares = []
     let board_code = board.toLowerCase().charCodeAt(0)
-    if(board_code==='w'.charCodeAt(0)){
-      this.translate = white_translate
-    }
-    else if(board_code==='b'.charCodeAt(0)){
-      this.translate = black_translate
-    }
-    else {
-      this.translate = neutral_translate
-    }
+    this.translate = assign_translate(board_code)
     this.make_squares(board, size, start_row)
   }
   make_squares(board, size, start_row){
@@ -72,5 +78,9 @@ class board{
 }
 
 export {
-  board
+  board,
+  neutral_translate,
+  white_translate,
+  black_translate,
+  assign_translate,
 }

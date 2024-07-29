@@ -23,11 +23,11 @@ class square{
 class corner_square extends square{
   constructor(
     column, row, is_light, object, translate, board,
-    f_b,r_l
+    is_forward,is_right
   ){
-    super(column, row, is_light, object, translate)
-    this.f_b = f_b
-    this.r_l = r_l
+    super(column, row, is_light, object, translate, board)
+    this.is_forward = is_forward
+    this.is_right = is_right
   }
 }
 

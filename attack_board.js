@@ -24,14 +24,14 @@ class attack_board{
     this.make_board(
       this.corner_square.is_forward, 
       this.corner_square.is_right, 
-      this.corner_square.is_light
+      this.corner_square.is_light, 
     )
     this.active = active
     if(this.active){
       scene.add(this.squares)
     }
   }
-  
+
   make_board(is_forward, is_right, parent_color){
     let f_factor = is_forward ? 1 : -1
     let r_factor = is_right ? 1 : -1
@@ -59,5 +59,13 @@ class attack_board{
       }
     }
     this.squares.position.y += (u_factor * 1.5)
+  }
+
+  update_active(){
+    this.active ?
+      scene.remove(this.squares)
+      :
+      scene.add(this.squares)
+    this.active = ! this.active
   }
 }

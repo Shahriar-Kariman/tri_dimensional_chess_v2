@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { board } from './board'
+import { attack_board } from './attack_board'
 
 // scene
 const scene = new THREE.Scene()
@@ -46,9 +47,24 @@ scene.add(stars)
 
 // main boards
 
-const b3 = new board('b',4,5) // black board
-const b2 = new board('n',4,3) // neutral board
-const b1 = new board('w',4,1) // white board
+const boards = [
+  new board('w',4,1), // white board
+  new board('n',4,3), // neutral board
+  new board('b',4,5), // black board
+]
+
+// attack_boards
+
+boards.forEach(
+  (b) => {
+    b.corner_squares.forEach(
+      (c)=>{
+        // determine if either of the 2 attack boards need to be active or not
+        // make 2 attack boards one up and one down
+      }
+    )
+  }
+)
 
 // axis helper
 const axesHelper = new THREE.AxesHelper(5);

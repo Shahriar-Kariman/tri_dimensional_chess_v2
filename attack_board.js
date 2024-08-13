@@ -69,3 +69,7 @@ class attack_board{
     this.active = ! this.active
   }
 }
+
+export {
+  attack_board
+}

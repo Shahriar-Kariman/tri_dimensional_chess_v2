@@ -49,7 +49,7 @@ scene.add(stars)
 const b3 = new board('b',4,5) // black board
 const b2 = new board('n',4,3) // neutral board
 const b1 = new board('w',4,1) // white board
-scene.add(b1.squares, b2.squares, b3.squares)
+// scene.add(b1.squares, b2.squares, b3.squares)
 
 // axis helper
 const axesHelper = new THREE.AxesHelper(5);

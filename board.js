@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { corner_square, square } from './square'
 import { black_square_material, square_geometry, translate, white_square_material } from './gloabal'
+import { scene } from './chess_experiance'
 
 const neutral_translate = (col,row)=>{
   row-=3
@@ -43,6 +44,7 @@ class board{
     let board_code = board.toLowerCase().charCodeAt(0)
     this.translate = assign_translate(board_code)
     this.make_squares(board, size, start_row)
+    scene.add(this.squares)
   }
   make_squares(board, size, start_row){
     const row_increment = start_row

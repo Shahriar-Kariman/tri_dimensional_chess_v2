@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import { assign_translate } from './board'
 import { black_square_material, square_geometry, white_square_material } from './gloabal'
 import { square } from './square'
+import { scene } from './chess_experiance'
 
 const loop_condition_helper = (val,dependent_val)=>{
   // this is to help with the for loop in the make_board function
@@ -12,7 +13,7 @@ const loop_condition_helper = (val,dependent_val)=>{
 }
 
 class attack_board{
-  constructor(corner_square, is_up, original_owner){
+  constructor(corner_square, is_up, original_owner, active){
     this.square_list = []
     this.squares = new THREE.Group()
     this.corner_square = corner_square // this is a corner square from a fixed board
@@ -20,8 +21,17 @@ class attack_board{
     const board_code = corner_square.board.toLowerCase().charCodeAt(0)
     this.translate = assign_translate(board_code)
     this.is_up = is_up
-    // to be continude...
+    this.make_board(
+      this.corner_square.is_forward, 
+      this.corner_square.is_right, 
+      this.corner_square.is_light
+    )
+    this.active = active
+    if(this.active){
+      scene.add(this.squares)
+    }
   }
+  
   make_board(is_forward, is_right, parent_color){
     let f_factor = is_forward ? 1 : -1
     let r_factor = is_right ? 1 : -1

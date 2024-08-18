@@ -55,16 +55,31 @@ const boards = [
 
 // attack_boards
 
+const attack_boards = []
+
 boards.forEach(
   (b) => {
     b.corner_squares.forEach(
       (c)=>{
         // determine if either of the 2 attack boards need to be active or not
-        // make 2 attack boards one up and one down
+        if(c.square_notation.row === 1 || c.square_notation.row === 8){
+          attack_boards.push(
+            new attack_board(c, true, c.board, true),
+            new attack_board(c, false, 'n', false),
+          )
+        }
+        else {
+          attack_boards.push(
+            new attack_board(c, true, 'n', false),
+            new attack_board(c, false, 'n', false),
+          )
+        }
       }
     )
   }
 )
+
+console.log(attack_boards.length)
 
 // axis helper
 const axesHelper = new THREE.AxesHelper(5);

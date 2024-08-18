@@ -17,7 +17,7 @@ class attack_board{
     this.square_list = []
     this.squares = new THREE.Group()
     this.corner_square = corner_square // this is a corner square from a fixed board
-    this.original_owner = original_owner // ture for white false for black
+    this.original_owner = original_owner // w for white b for black n for not assigned
     const board_code = corner_square.board.toLowerCase().charCodeAt(0)
     this.translate = assign_translate(board_code)
     this.is_up = is_up

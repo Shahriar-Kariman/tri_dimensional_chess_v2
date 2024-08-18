@@ -68,6 +68,7 @@ class board{
             col===0 ? false : true
             // I know I could just negate the result but it is easer to undestand it this way
           )
+          this.corner_squares.push(s)
         }
         else {
           s = new square(column, r, is_light, obj, this.translate)

@@ -79,8 +79,6 @@ boards.forEach(
   }
 )
 
-console.log(attack_boards.length)
-
 // axis helper
 const axesHelper = new THREE.AxesHelper(5);
 scene.add( axesHelper );

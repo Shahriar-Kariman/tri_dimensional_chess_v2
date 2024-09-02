@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { board } from './board'
 import { attack_board } from './attack_board'
+import { renderer, camera } from './main'
 
 // scene
 const scene = new THREE.Scene()
@@ -81,7 +82,28 @@ boards.forEach(
 
 // axis helper
 const axesHelper = new THREE.AxesHelper(5);
+axesHelper.name = 'axis_helper'
 scene.add( axesHelper );
+
+// raycasting
+
+const raycaster = new THREE.Raycaster()
+
+function selector(event){
+  const coords = new THREE.Vector2(
+    (event.clientX / renderer.domElement.clientWidth) * 2 - 1,
+    - ((event.clientY / renderer.domElement.clientHeight) * 2 -1),
+  )
+  raycaster.setFromCamera(coords,camera)
+  const intersections = raycaster.intersectObjects(scene.children, true)
+  // remember to exclude pieces later
+  
+  if(intersections.length>0){
+    console.log(intersections[0].object.name)
+  }
+}
+
+document.addEventListener('mousedown',selector)
 
 export {
   scene,

@@ -54,3 +54,8 @@ game_loop(
   renderer,
   camera
 )
+
+export {
+  renderer,
+  camera
+}

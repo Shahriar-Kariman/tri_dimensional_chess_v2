@@ -71,7 +71,7 @@ class board{
           this.corner_squares.push(s)
         }
         else {
-          s = new square(column, r, is_light, obj, this.translate)
+          s = new square(column, r, is_light, obj, this.translate, board)
         }
         this.square_list.push(s)
         this.squares.add(s.object)
